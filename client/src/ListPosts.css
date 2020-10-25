@@ -1,0 +1,16 @@
+.posts {
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
+  grid-gap: 20px;
+  text-align: left;
+}
+
+
+.posts > li {
+  border: 1px solid #fff;
+  padding: 20px;
+}
