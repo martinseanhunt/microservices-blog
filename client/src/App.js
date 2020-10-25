@@ -10,7 +10,7 @@ const App = () => {
   const [posts, setPosts] = useState([])
 
   const getPosts = async () => {
-    const res = await axios.get('http://localhost:4000/posts')
+    const res = await axios.get('http://localhost:4002/posts')
     setPosts([...Object.values(res.data)])
   }
 
@@ -24,7 +24,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <CreatePost getPosts={getPosts} />
-        <ListPosts posts={posts} />
+        <ListPosts posts={posts} getPosts={getPosts} />
       </header>
     </div>
   );

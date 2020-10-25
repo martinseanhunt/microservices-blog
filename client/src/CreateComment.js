@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-const CreateComment = ({ postId, getComments }) => {
+const CreateComment = ({ postId, getPosts }) => {
   const [comment, setComment] = useState('')
   
   const postComment = async e => {
@@ -12,7 +12,7 @@ const CreateComment = ({ postId, getComments }) => {
       content: comment
     })
     setComment('')
-    getComments()
+    getPosts()
   }
 
   return (

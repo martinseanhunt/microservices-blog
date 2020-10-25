@@ -30,6 +30,12 @@ app.post('/posts', async (req, res) => {
   return res.status(201).send(posts[id])
 })
 
+app.post('/events', (req, res) => {
+  console.log('received event: ' + req.body.type)
+
+  return res.status(200)
+})
+
 app.listen(4000, () => {
   console.log('listening on port 4000')
 })
