@@ -20,7 +20,11 @@ app.post('/posts/:id/comments', async (req, res) => {
   const commentId = randomBytes(4).toString('hex')
   const { content } = req.body
 
-  const comment = { commentId, content }
+  const comment = { 
+    commentId, 
+    content,
+    status: 'PENDING'
+  }
   const existingComments = comments[postId] || []
 
   comments[postId] = [...existingComments, comment]
@@ -37,10 +41,26 @@ app.post('/posts/:id/comments', async (req, res) => {
   return res.status(201).send(comments)
 })
 
-app.post('/events', (req, res) => {
-  console.log('received event: ' + req.body.type)
+app.post('/events', async (req, res) => {
+  const { type, data } = req.body
 
-  return res.status(200)
+  switch(type) {
+    case 'COMMENT_MODERATED':
+      const comment = comments[data.postId].find(c => c.commentId = data.commentId)
+      comment.status = data.status
+
+      await axios.post('http://localhost:4005/events', {
+        type: 'COMMENT_UPDATED',
+        data: {
+          ...comment,
+          postId: data.postId
+        }
+      })
+
+      break
+  }
+
+  return res.status(200).send({})
 })
 
 app.listen(4001, () => {

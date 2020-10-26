@@ -33,7 +33,7 @@ app.post('/posts', async (req, res) => {
 app.post('/events', (req, res) => {
   console.log('received event: ' + req.body.type)
 
-  return res.status(200)
+  return res.status(200).send({})
 })
 
 app.listen(4000, () => {
