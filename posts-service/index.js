@@ -37,5 +37,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(4000, () => {
+  console.log('hello this is an edit to test docker hub')
   console.log('listening on port 4000')
 })
