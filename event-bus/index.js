@@ -12,10 +12,10 @@ app.post('/events', (req, res) => {
 
   events.push(event)
 
-  axios.post('http://localhost:4000/events', event)
-  axios.post('http://localhost:4001/events', event)
-  axios.post('http://localhost:4002/events', event)
-  axios.post('http://localhost:4003/events', event)
+  axios.post('http://posts-service-clusterip-srv:4000/events', event)
+  axios.post('http://comments-service-clusterip-srv:4001/events', event)
+  axios.post('http://query-service-clusterip-srv:4002/events', event)
+  axios.post('http://moderation-service-clusterip-srv:4003/events', event)
 
   return res.send({ status: 'OK' })
 })

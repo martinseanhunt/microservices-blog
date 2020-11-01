@@ -12,7 +12,7 @@ app.post('/events', (req, res) => {
     case 'COMMENT_CREATED':
       // using timeout to simulate a delay in processing (i.e. a human moderating)
       setTimeout(() => {
-        axios.post('http://localhost:4005/events', {
+        axios.post('http://event-bus-srv:4005/events', {
           type: 'COMMENT_MODERATED',
           data: {
             ...data,
