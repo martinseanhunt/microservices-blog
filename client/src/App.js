@@ -18,8 +18,6 @@ const App = () => {
     getPosts()
   }, [])
 
-  console.log(posts)
-
   return (
     <div className="App">
       <header className="App-header">
