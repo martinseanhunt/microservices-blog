@@ -8,7 +8,7 @@ const CreateComment = ({ postId, getPosts }) => {
     e.preventDefault()
     if(!comment) return null
 
-    await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+    await axios.post(`http://microservices-blog.com/posts/${postId}/comments`, {
       content: comment
     })
     setComment('')

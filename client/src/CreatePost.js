@@ -8,7 +8,7 @@ const CreatePost = ({ getPosts }) => {
     e.preventDefault()
     if(!title) return null
 
-    await axios.post('http://localhost:4000/posts', { title })
+    await axios.post('http://microservices-blog.com/posts/create', { title })
     setTitle('')
     getPosts()
   }
